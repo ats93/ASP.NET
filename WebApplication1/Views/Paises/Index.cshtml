@@ -1,0 +1,38 @@
+﻿@model PaisView;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Paises
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        @foreach (var p in Model.paises)
+        {
+            <a class="dropdown-item" onclick="getCiudades(@p.Id)">@p.Nombre</a>
+            //@Html.ActionLink(p.Nombre, "", "PaisesController");
+        }
+        <script>
+            function getCiudades(id) {
+                $.ajax({
+                    url: "Paises/GetCiudades",
+                    data:
+                    {
+                        "id": id
+                    },
+                    method: 'GET',
+                    success: function (resp) {
+                        console.log(resp);
+                        return resp;
+                    }
+
+                }
+                );
+            }
+        </script>
+    </div>
+</div>
+<partial name="DropDownPartial"/>
+

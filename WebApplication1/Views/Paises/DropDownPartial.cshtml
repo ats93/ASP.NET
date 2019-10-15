@@ -1,0 +1,17 @@
+﻿@model PaisView
+@{
+    ViewData["Title"] = "DropDownPartial";
+}
+
+<!-- CIUDADES -->
+<ul class="list-group">
+    @if (Model.ciudades != null)
+    {
+        @foreach (var c in Model.ciudades)
+        {
+            <li class="list-group-item">@c.Nombre</li>
+        }
+    }
+
+</ul>
+
